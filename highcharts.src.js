@@ -10804,13 +10804,12 @@
 
             // Don't initiate panning until the user has pinched. This prevents us from
             // blocking page scrolling as users scroll down a long page (#4210).
+            // UW fix: this allows to properly touch to see tooltips when graph is zoomed (https://github.com/highcharts/highcharts/pull/4633)
             if (touchesLength > 1 || e.type === 'touchmove') {
-              self.initiated = true;
               self.initiated = true;
             } else if (touchesLength === 1 && e.type === 'touchstart') {
               self.initiated = undefined;
             }
-          }
 
             // On touch devices, only proceed to trigger click if a handler is defined
             if (hasZoom && self.initiated && !fireClickEvent) {
